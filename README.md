@@ -1,7 +1,8 @@
-# SpineDoc Backend
+# SpineDoc Backend (Open Source)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
+[![MCP Protocol](https://img.shields.io/badge/MCP-1.0-blue.svg)](https://modelcontextprotocol.io/)
 
 > **长文档检索专家** - 专为 1000-5000 页长文档设计的 RAG 后端引擎
 
@@ -71,6 +72,36 @@ python -m app.main
 
 ---
 
+## 🤖 MCP 服务器
+
+### 启动开源版 MCP
+
+```bash
+cd backend
+python -m app.mcp_server --transport stdio
+```
+
+### 可用工具（5 个）
+
+| 工具 | 功能 |
+|------|------|
+| `parse_document_spine` | PDF 解析 +TOC 提取 |
+| `fast_track_analyze` | 一键极速分析 |
+| `fetch_secure_physical_slice` | 章节原文提取 |
+| `search_by_toc` | 逻辑感知检索 |
+| `spine_chat` | 端到端文档对话 |
+
+### 配置 Cherry Studio
+
+1. 打开 设置 - MCP - 添加服务器
+2. 配置：
+   - **名称**: SpineDoc Open Source
+   - **类型**: stdio
+   - **命令**: `/path/to/python`
+   - **参数**: `/path/to/mcp_server.py`
+
+---
+
 ## 📁 项目结构
 
 ```
@@ -83,7 +114,8 @@ Spine-open/
 │   │   │   ├── parser.py      # 混合解析器
 │   │   │   ├── rag/           # RAG 引擎
 │   │   │   └── toc/           # TOC 提取
-│   │   └── api/               # RESTful API
+│   │   ├── api/               # RESTful API
+│   │   └── mcp_server.py      # MCP 服务器（开源版）
 │   ├── scripts/               # 工具脚本
 │   └── tests/                 # 测试
 ├── docker/                    # Docker 配置
@@ -132,19 +164,35 @@ MIT License - 详见 [LICENSE](LICENSE)
 
 ## 💼 企业版功能
 
-需要企业级功能？查看 [SpineDoc Enterprise](https://github.com/yjh2222332024/Spine-enterprise)(待发布)
+需要企业级功能？查看 [SpineDoc Enterprise](https://github.com/yjh2222332024/Spine-enterprise)
 
-- ✅ 多智能体编排（LangGraph 5 节点）
-- ✅ OCR+ 语义对齐（扫描件处理）
-- ✅ 跨文档知识图谱
-- ✅ 自动标注流水线
-- ✅ API Key 鉴权 + 限流
-- ✅ SLA 保障 + 技术支持
+### 开源版 vs 企业版对比
+
+| 功能 | 开源版 | 企业版 |
+|------|--------|--------|
+| **PDF 解析 +TOC 提取** | ✅ | ✅ |
+| **基础 RAG 检索** | ✅ | ✅ |
+| **文档对话** | ✅ | ✅ |
+| **全量向量化索引** | ❌ | ✅ |
+| **跨文档知识图谱** | ❌ | ✅ |
+| **RAPTOR 递归摘要** | ❌ | ✅ |
+| **OCR 语义对齐** | ❌ | ✅ |
+| **自动标注流水线** | ❌ | ✅ |
+| **API Key 鉴权** | ❌ | ✅ |
+| **限流审计** | ❌ | ✅ |
+| **SLA 保障** | ❌ | ✅ |
+| **技术支持** | 社区 | 专属 |
+
+### 企业版联系
+
+- 📧 邮箱：sales@spinedoc.ai
+- 💼 官网：https://spinedoc.ai
+- 📱 微信：SpineDoc-Official
 
 ---
 
 ## 📬 联系方式
 
 - **项目问题**: [GitHub Issues](https://github.com/yjh2222332024/Spine-open/issues)
-- **商务合作**: 2857922968@qq.com
-
+- **技术讨论**: 微信群/Discord
+- **商务合作**: your-email@example.com
