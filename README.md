@@ -1,86 +1,86 @@
-# 🏛️ SpineDoc (阅脊): The Semantic Logic Engine for Shell
+# 🏛️ SpineDoc (阅脊): 终端语义逻辑引擎
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/许可证-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
-[![Trident Architecture](https://img.shields.io/badge/Arch-Trident_v1.2.0-red.svg)](#-trident-architecture)
+[![Trident Architecture](https://img.shields.io/badge/架构-Trident_v1.2.0-red.svg)](#-三叉戟架构-trident)
 
-> **"Stop chatting with PDFs. Start reconstructing their logic."**
+> **"不要只是与 PDF 聊天，去重构它们的逻辑。"**
 >
-> SpineDoc is an agentic RAG engine designed specifically for **ultra-long documents (1000-5000 pages)**. It doesn't just "read" text; it reconstructs the **Implicit Spine (ISR)** of a document to enable high-precision, logical-aware retrieval.
+> **SpineDoc (阅脊)** 是一款专为 **超长文档 (1000-5000 页)** 设计的智能 Agent 引擎。它拒绝盲目的文本切块，通过独创的 **隐式脊梁重建 (ISR)** 技术，将非结构化的 PDF 还原为有序的“知识晶体”，实现逻辑感知级的高精度检索。
 
 ---
 
-## 🔱 Trident Architecture
+## 🔱 三叉戟架构 (Trident Architecture)
 
-SpineDoc v1.2.0 establishes a three-in-one ecosystem for document intelligence:
+SpineDoc v1.2.0 构建了“三位一体”的文档智能生态：
 
-1.  **Core CLI (The Engine)**: A powerful shell interface for indexing, tree-viewing, and cross-document synthesis.
-2.  **Embedded MCP Server (The Protocol)**: Instant integration with Claude Desktop, Cursor, and IDEs via the Model Context Protocol.
-3.  **Gemini Agent Skill (The Intelligence)**: Native integration for AI agents to autonomously manage and query your knowledge crystals.
-
----
-
-## 🌟 Key Innovations
-
-*   **🧬 ISR (Implicit Spine Reconstruction)**: Recovers the document's logical hierarchy using a multi-agent federation.
-*   **🛰️ Cascading Retrieval**: Routes queries through the logical spine first, reducing token costs by **90%** compared to GraphRAG.
-*   **⚔️ Matrix Fusion**: Orchestrates multi-document "debates" to generate comprehensive comparative summaries.
-*   **🎯 Physical Attribution**: Every answer is anchored to a **Physical Page Number** and **Section Title**.
+1.  **核心 CLI (引擎层)**: 强大的终端交互界面，支持秒级入库、逻辑树可视化及跨文档矩阵融合综述。
+2.  **内置 MCP 服务器 (协议层)**: 完美对接 Claude Desktop、Cursor 及各大 IDE，让顶级 AI 直接调度本地文档逻辑。
+3.  **Gemini Agent Skill (智能层)**: 原生集成 AI Agent 技能，实现知识晶体的自主编纂与智能化查询。
 
 ---
 
-## 🚀 Quick Start
+## 🌟 核心黑科技
 
-### 1. Installation
+*   **🧬 ISR (Implicit Spine Reconstruction)**: 采用多智能体联邦驱动，精准重建文档的逻辑骨架。
+*   **🛰️ 级联检索 (Cascading Retrieval)**: 优先通过逻辑脊梁路由，相比 GraphRAG 降低 **90%** 的 Token 消耗。
+*   **⚔️ 矩阵融合 (Matrix Fusion)**: 跨文档“协同辩论”技术，一键生成多篇论文/报告的对比性综述。
+*   **🎯 物理级溯源**: 每一个回答都精准锚定 **PDF 物理页码** 与 **逻辑章节名称**。
+
+---
+
+## 🚀 极速上手
+
+### 1. 安装
 ```bash
 git clone https://github.com/yjh2222332024/Spine-open.git
 cd Spine-open
 pip install -e .
 ```
 
-### 2. Configuration
-Create a `.env` file in the root directory and add your API Key:
+### 2. 配置环境变量
+在项目根目录下创建 `.env` 文件并添加你的 API Key：
 ```bash
-LLM_API_KEY=your_key_here
+LLM_API_KEY=你的API_KEY
 ```
 
-### 3. Run Your First Synthesis
+### 3. 开启你的第一场逻辑透析
 ```bash
-# Index official example papers
+# 入库官方演示学术论文
 spine ingest examples/academic_papers/
 
-# Generate a comparative summary
-spine compare "Innovation and Performance in RAG"
+# 运行跨文档对比综述
+spine compare "RAG 技术的创新与性能对比"
 ```
 
 ---
 
-## 📊 Benchmarks
+## 📊 性能量化 (真实测评数据)
 
-| Metric | GraphRAG (Baseline) | **SpineDoc (v1.2.0)** |
-| :--- | :--- | :--- |
-| **Indexing Speed** | ~1 hour / 3 PDFs | **43.1 seconds / 3 PDFs** |
-| **Token Cost** | ~20,000+ Tokens | **~2,150 Tokens** |
-| **Precision** | Community Level | **Physical Page Level** |
+| 维度 | GraphRAG (行业基准) | **SpineDoc (v1.2.0)** | **提升/优势** |
+| :--- | :--- | :--- | :--- |
+| **构建速度** | ~1 小时 / 3 篇 PDF | **43.1 秒 / 3 篇 PDF** | **🚀 快 ~100 倍** |
+| **Token 成本** | ~20,000+ Tokens | **~2,150 Tokens** | **💰 节省 90.7%** |
+| **引用精度** | 社区/报告级 | **物理页码级** | **🎯 100% 真实溯源** |
 
-*For detailed reports, see [BENCHMARK.md](BENCHMARK.md).*
-
----
-
-## 🏛️ Acknowledgments & Credits
-
-### Core Technology
-SpineDoc is powered by the following open-source giants:
-- **[LangGraph](https://github.com/langchain-ai/langgraph)**: Agentic orchestration.
-- **[LanceDB](https://github.com/lancedb/lancedb)**: High-performance vector storage.
-- **[PyMuPDF](https://github.com/pymupdf/PyMuPDF)**: Advanced document parsing.
-
-### Demo Dataset
-The example papers in `examples/academic_papers/` are sourced from **arXiv.org**. We deeply thank the authors and the research community for their open contributions to the field of AI and RAG.
+*详细测评报告请参阅 [BENCHMARK.md](BENCHMARK.md)。*
 
 ---
 
-## 📄 License
-This project is licensed under the **MIT License**.
+## 🏛️ 致谢与声明
 
-Copyright (c) 2026 SpineDoc Team. All Rights Reserved.
+### 核心技术支持
+SpineDoc 的强大离不开以下开源项目的支持：
+- **[LangGraph](https://github.com/langchain-ai/langgraph)**: Agentic 任务编排。
+- **[LanceDB](https://github.com/lancedb/lancedb)**: 高性能向量存储。
+- **[PyMuPDF](https://github.com/pymupdf/PyMuPDF)**: 深度文档解析。
+
+### 演示数据集
+`examples/academic_papers/` 中的示例论文均源自 **arXiv.org**。我们深表感谢论文作者及科研社区在 AI 与 RAG 领域做出的杰出贡献。
+
+---
+
+## 📄 开源协议
+本项目采用 **MIT License** 协议。
+
+Copyright (c) 2026 **Junhao Yan (严俊皓)**. All Rights Reserved.
