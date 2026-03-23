@@ -216,8 +216,8 @@ def compare(
 def mcp():
     """📡 启动内置 MCP 服务器，对接 Claude/IDE 等外部 AI 客户端。"""
     from spine_cli.mcp.server import run_mcp_server
-    console.print("[bold green]📡 SpineDoc MCP 服务器正在启动...[/bold green]")
-    console.print("[dim]传输协议: stdio (标准输入输出)[/dim]")
+    # console.print("[bold green]📡 SpineDoc MCP 服务器正在启动...[/bold green]")
+    # console.print("[dim]传输协议: stdio (标准输入输出)[/dim]")
     run_mcp_server()
 
 if __name__ == "__main__":
