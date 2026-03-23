@@ -1,198 +1,86 @@
-# SpineDoc Backend (Open Source)
+# 🏛️ SpineDoc (阅脊): The Semantic Logic Engine for Shell
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
-[![MCP Protocol](https://img.shields.io/badge/MCP-1.0-blue.svg)](https://modelcontextprotocol.io/)
+[![Trident Architecture](https://img.shields.io/badge/Arch-Trident_v1.2.0-red.svg)](#-trident-architecture)
 
-> **长文档检索专家** - 专为 1000-5000 页长文档设计的 RAG 后端引擎
-
-**性能对比** | **使用文档** | **企业版**
-
----
-
-## 🚀 核心特性
-
-- **ISR 隐式脊梁重建**：还原文档逻辑结构，检索精度提升 108.9%
-- **SCR 级联检索**：TOC 路由 + 向量召回，时延仅 14.8ms
-- **长文档优化**：支持单文档 5000 页，100+ 文档协同
-- **极致成本**：15 文档协同检索仅 2 万 Token（降低 95.6%）
+> **"Stop chatting with PDFs. Start reconstructing their logic."**
+>
+> SpineDoc is an agentic RAG engine designed specifically for **ultra-long documents (1000-5000 pages)**. It doesn't just "read" text; it reconstructs the **Implicit Spine (ISR)** of a document to enable high-precision, logical-aware retrieval.
 
 ---
 
-## 📊 性能对比
+## 🔱 Trident Architecture
 
-| 指标 | GraphRAG | LightRAG | SpineDoc |
-|------|----------|----------|----------|
-| 长文档支持 | ❌ | ❌ | ✅ **5000 页** |
-| 检索时延 | >500ms | >100ms | **14.8ms** |
-| Token 消耗 | 未披露 | 30K/查询 | **2 万/15 文档** |
-| 部署成本 | ¥5000+/月 | ¥2000+/月 | **¥500/月** |
-| 检索精度 | 8.5/10 | 领先 52.3% | **8.5/10 (+108.9%)** |
+SpineDoc v1.2.0 establishes a three-in-one ecosystem for document intelligence:
+
+1.  **Core CLI (The Engine)**: A powerful shell interface for indexing, tree-viewing, and cross-document synthesis.
+2.  **Embedded MCP Server (The Protocol)**: Instant integration with Claude Desktop, Cursor, and IDEs via the Model Context Protocol.
+3.  **Gemini Agent Skill (The Intelligence)**: Native integration for AI agents to autonomously manage and query your knowledge crystals.
 
 ---
 
-## 🚀 快速开始
+## 🌟 Key Innovations
 
-### 1. 克隆仓库
+*   **🧬 ISR (Implicit Spine Reconstruction)**: Recovers the document's logical hierarchy using a multi-agent federation.
+*   **🛰️ Cascading Retrieval**: Routes queries through the logical spine first, reducing token costs by **90%** compared to GraphRAG.
+*   **⚔️ Matrix Fusion**: Orchestrates multi-document "debates" to generate comprehensive comparative summaries.
+*   **🎯 Physical Attribution**: Every answer is anchored to a **Physical Page Number** and **Section Title**.
 
+---
+
+## 🚀 Quick Start
+
+### 1. Installation
 ```bash
 git clone https://github.com/yjh2222332024/Spine-open.git
 cd Spine-open
+pip install -e .
 ```
 
-### 2. 启动数据库（Docker）
-
+### 2. Configuration
+Create a `.env` file in the root directory and add your API Key:
 ```bash
-cd docker
-docker-compose up -d db redis
+LLM_API_KEY=your_key_here
 ```
 
-### 3. 安装依赖
-
+### 3. Run Your First Synthesis
 ```bash
-cd backend
-pip install -r requirements.txt
-```
+# Index official example papers
+spine ingest examples/academic_papers/
 
-### 4. 配置环境变量
-
-```bash
-cp ../.env.template ../backend/.env
-# 编辑 .env 文件，填入你的 LLM API Key
-```
-
-### 5. 启动后端
-
-```bash
-cd backend
-python -m app.main
-```
-
-访问 http://localhost:8000/docs 查看 API 文档
-
----
-
-## 🤖 MCP 服务器
-
-### 启动开源版 MCP
-
-```bash
-cd backend
-python -m app.mcp_server --transport stdio
-```
-
-### 可用工具（5 个）
-
-| 工具 | 功能 |
-|------|------|
-| `parse_document_spine` | PDF 解析 +TOC 提取 |
-| `fast_track_analyze` | 一键极速分析 |
-| `fetch_secure_physical_slice` | 章节原文提取 |
-| `search_by_toc` | 逻辑感知检索 |
-| `spine_chat` | 端到端文档对话 |
-
-### 配置 Cherry Studio
-
-1. 打开 设置 - MCP - 添加服务器
-2. 配置：
-   - **名称**: SpineDoc Open Source
-   - **类型**: stdio
-   - **命令**: `/path/to/python`
-   - **参数**: `/path/to/mcp_server.py`
-
----
-
-## 📁 项目结构
-
-```
-Spine-open/
-├── backend/
-│   ├── app/
-│   │   ├── core/              # 核心配置
-│   │   ├── schemas/           # 数据模型
-│   │   ├── services/          # 业务逻辑
-│   │   │   ├── parser.py      # 混合解析器
-│   │   │   ├── rag/           # RAG 引擎
-│   │   │   └── toc/           # TOC 提取
-│   │   ├── api/               # RESTful API
-│   │   └── mcp_server.py      # MCP 服务器（开源版）
-│   ├── scripts/               # 工具脚本
-│   └── tests/                 # 测试
-├── docker/                    # Docker 配置
-├── examples/                  # 示例代码
-├── docs/                      # 文档
-├── .env.template
-├── LICENSE
-└── README.md
+# Generate a comparative summary
+spine compare "Innovation and Performance in RAG"
 ```
 
 ---
 
-## 📖 文档
+## 📊 Benchmarks
 
-- [使用指南](docs/USAGE.md)
-- [架构设计](docs/ARCHITECTURE.md)
-- [性能基准](docs/BENCHMARK.md)
+| Metric | GraphRAG (Baseline) | **SpineDoc (v1.2.0)** |
+| :--- | :--- | :--- |
+| **Indexing Speed** | ~1 hour / 3 PDFs | **43.1 seconds / 3 PDFs** |
+| **Token Cost** | ~20,000+ Tokens | **~2,150 Tokens** |
+| **Precision** | Community Level | **Physical Page Level** |
 
----
-
-## 🧪 运行测试
-
-```bash
-cd backend
-pip install pytest pytest-asyncio
-pytest tests/ -v
-```
+*For detailed reports, see [BENCHMARK.md](BENCHMARK.md).*
 
 ---
 
-## 🐳 Docker 部署
+## 🏛️ Acknowledgments & Credits
 
-```bash
-cd docker
-docker-compose up -d
-docker-compose logs -f backend
-```
+### Core Technology
+SpineDoc is powered by the following open-source giants:
+- **[LangGraph](https://github.com/langchain-ai/langgraph)**: Agentic orchestration.
+- **[LanceDB](https://github.com/lancedb/lancedb)**: High-performance vector storage.
+- **[PyMuPDF](https://github.com/pymupdf/PyMuPDF)**: Advanced document parsing.
 
----
-
-## 📄 开源协议
-
-MIT License - 详见 [LICENSE](LICENSE)
+### Demo Dataset
+The example papers in `examples/academic_papers/` are sourced from **arXiv.org**. We deeply thank the authors and the research community for their open contributions to the field of AI and RAG.
 
 ---
 
-## 💼 企业版功能
+## 📄 License
+This project is licensed under the **MIT License**.
 
-需要企业级功能？查看 [SpineDoc Enterprise](https://github.com/yjh2222332024/Spine-enterprise)
-
-### 开源版 vs 企业版对比
-
-| 功能 | 开源版 | 企业版 |
-|------|--------|--------|
-| **PDF 解析 +TOC 提取** | ✅ | ✅ |
-| **基础 RAG 检索** | ✅ | ✅ |
-| **文档对话** | ✅ | ✅ |
-| **全量向量化索引** | ❌ | ✅ |
-| **跨文档知识图谱** | ❌ | ✅ |
-| **RAPTOR 递归摘要** | ❌ | ✅ |
-| **OCR 语义对齐** | ❌ | ✅ |
-| **自动标注流水线** | ❌ | ✅ |
-| **API Key 鉴权** | ❌ | ✅ |
-| **限流审计** | ❌ | ✅ |
-| **SLA 保障** | ❌ | ✅ |
-| **技术支持** | 社区 | 专属 |
-
-### 企业版联系
-
-- 📧 邮箱：sales@spinedoc.ai
-- 💼 官网：https://spinedoc.ai
-- 📱 微信：SpineDoc-Official
-
----
-
-## 📬 联系方式
-
-- **项目问题**: [GitHub Issues](https://github.com/yjh2222332024/Spine-open/issues)
-- **技术讨论**: 微信群/Discord
-- **商务合作**: your-email@example.com
+Copyright (c) 2026 SpineDoc Team. All Rights Reserved.

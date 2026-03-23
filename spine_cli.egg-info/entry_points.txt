@@ -1,0 +1,2 @@
+[console_scripts]
+spine = spine_cli.main:app

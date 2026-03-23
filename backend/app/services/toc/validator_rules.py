@@ -5,7 +5,16 @@ Author: Yan Junhao (严俊皓)
 License: Private / Proprietary (Unauthorized copying is strictly prohibited)
 """
 from typing import List, Dict, Any
-from app.agents.state import DocumentType
+try:
+    from app.agents.state import DocumentType
+except ImportError:
+    # 架构师适配: 针对精简版/CLI版的回退逻辑
+    from enum import Enum
+    class DocumentType(str, Enum):
+        NATIVE = "native"
+        SCANNED = "scanned"
+        HYBRID = "hybrid"
+
 
 class TOCValidator:
     """

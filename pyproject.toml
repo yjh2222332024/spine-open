@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "spine-cli"
+version = "1.2.0"
+description = "SpineDoc CLI - Agent-Native Logic Engine"
+authors = [{ name = "SpineDoc Team", email = "admin@spinedoc.ai" }]
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "typer>=0.9.0",
+    "rich>=13.0.0",
+    "pymupdf>=1.23.0",
+    "lancedb>=0.3.0",
+    "sentence-transformers>=2.2.2",
+    "pyarrow>=14.0.1",
+    "openai>=1.0.0",
+    "pydantic-settings>=2.0.0",
+    "langgraph>=0.0.10"
+]
+
+[project.scripts]
+spine = "spine_cli.main:app"
+
+[tool.setuptools]
+packages = ["spine_cli", "spine_cli.core", "spine_cli.core.agents", "spine_cli.core.agents.nodes", "spine_cli.indexer", "spine_cli.llm", "spine_cli.mcp", "app", "app.services", "app.services.rag", "app.services.toc", "app.core", "app.schemas"]
+
+[tool.setuptools.package-dir]
+"spine_cli" = "spine_cli"
+"app" = "backend/app"
